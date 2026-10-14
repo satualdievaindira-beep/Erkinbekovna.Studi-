@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Erkinbekovna.Studio — студия красоты в Бишкеке</title>
+  <meta name="description" content="Студия красоты Erkinbekovna.Studio: волосы, брови, ресницы, шугаринг, маникюр и педикюр. Бишкек, ул. Гагарина 135а. Онлайн-запись через WhatsApp.">
+  <meta name="theme-color" content="#C9A27A">
+  <link rel="icon" href="assets/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="container header__row">
+    <a href="#top" class="brand" aria-label="Erkinbekovna.Studio">
+      <img src="assets/logo.jpg" alt="Логотип Erkinbekovna studio" class="brand__logo">
+      <span class="brand__name">Erkinbekovna<small>.Studio</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Основное меню">
+      <a href="#prices">Цены</a>
+      <a href="#booking">Запись</a>
+      <a href="#founder">Основательница</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="btn btn--small header__cta" href="#booking">Записаться</a>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__text">
+        <h1>Студия красоты<br>в центре Бишкека</h1>
+        <p class="hero__lead">Волосы, брови, ресницы, шугаринг, маникюр и педикюр. Выберите услугу, дату и время — мы подтвердим запись в WhatsApp.</p>
+        <div class="hero__actions">
+          <a href="#booking" class="btn">Записаться онлайн</a>
+          <a href="#prices" class="btn btn--ghost">Смотреть цены</a>
+        </div>
+        <dl class="hero__facts">
+          <div><dt>Адрес</dt><dd>ул. Гагарина, 135а</dd></div>
+          <div><dt>Запись</dt><dd>WhatsApp</dd></div>
+          <div><dt>Услуг</dt><dd id="servicesCount">50+</dd></div>
+        </dl>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__ring">
+          <img src="assets/logo.jpg" alt="Золотой логотип Erkinbekovna studio" class="hero__logo">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="prices">
+    <div class="container">
+      <div class="section__head">
+        <h2>Цены на услуги</h2>
+        <p>Цены в сомах. «От» означает, что точная стоимость зависит от длины волос или сложности работы.</p>
+      </div>
+      <div class="tabs" id="tabs" role="tablist" aria-label="Категории услуг"></div>
+      <div class="price-panel" id="pricePanel" role="tabpanel"></div>
+    </div>
+  </section>
+
+  <section class="section section--tint" id="booking">
+    <div class="container booking">
+      <div class="section__head section__head--left">
+        <h2>Онлайн-запись</h2>
+        <p>Заполните форму и нажмите «Записаться». Откроется WhatsApp с готовым сообщением — вам останется только отправить его.</p>
+        <ul class="steps">
+          <li>Выберите одну или несколько услуг</li>
+          <li>Укажите дату и свободное время</li>
+          <li>Отправьте сообщение в WhatsApp</li>
+        </ul>
+      </div>
+
+      <form class="form" id="bookingForm" novalidate>
+        <fieldset class="form__block">
+          <legend>1. Услуги</legend>
+          <div class="picker__cats" id="pickerCats"></div>
+          <div class="picker__list" id="pickerList"></div>
+          <div class="chosen" id="chosen" aria-live="polite">Услуги не выбраны</div>
+          <p class="error" id="errServices" hidden>Выберите хотя бы одну услугу.</p>
+        </fieldset>
+
+        <fieldset class="form__block">
+          <legend>2. Дата и время</legend>
+          <label class="field">
+            <span>Дата</span>
+            <input type="date" id="date" required>
+          </label>
+          <p class="error" id="errDate" hidden>Выберите дату не раньше сегодняшней.</p>
+          <div class="slots" id="slots" role="radiogroup" aria-label="Время"></div>
+          <p class="hint" id="slotHint">Сначала выберите дату.</p>
+          <p class="error" id="errTime" hidden>Выберите время.</p>
+        </fieldset>
+
+        <fieldset class="form__block">
+          <legend>3. Ваши данные</legend>
+          <label class="field">
+            <span>Имя</span>
+            <input type="text" id="name" placeholder="Например, Айдана" autocomplete="name" required>
+          </label>
+          <p class="error" id="errName" hidden>Введите имя.</p>
+          <label class="field">
+            <span>Телефон (необязательно)</span>
+            <input type="tel" id="phone" placeholder="+996 ___ ___ ___" autocomplete="tel">
+          </label>
+          <label class="field">
+            <span>Комментарий (необязательно)</span>
+            <textarea id="comment" rows="3" placeholder="Пожелания, длина волос, референс"></textarea>
+          </label>
+        </fieldset>
+
+        <button type="submit" class="btn btn--wa btn--block">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.5z"/></svg>
+          Записаться в WhatsApp
+        </button>
+        <p class="hint form__note">Запись считается подтверждённой после ответа студии.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" id="founder">
+    <div class="container admin">
+      <figure class="admin__photo">
+        <img src="assets/admin.jpg" alt="Основательница студии Erkinbekovna" loading="lazy">
+      </figure>
+      <div class="admin__text">
+        <h2>Основательница студии</h2>
+        <p>Напишите ей напрямую в WhatsApp: подскажет, какая услуга подойдёт, согласует время и ответит на вопросы по ценам.</p>
+        <a class="btn btn--wa" id="waAdmin" href="#" target="_blank" rel="noopener">Написать в WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint" id="contacts">
+    <div class="container contacts">
+      <div>
+        <h2>Как нас найти</h2>
+        <p class="contacts__addr">Бишкек, улица Гагарина, 135а</p>
+        <div class="contacts__actions">
+          <a class="btn" href="https://2gis.kg/bishkek/geo/70000001117153093" target="_blank" rel="noopener">Открыть в 2ГИС</a>
+          <a class="btn btn--wa" id="waContact" href="#" target="_blank" rel="noopener">WhatsApp +996 551 040 824</a>
+        </div>
+      </div>
+      <a class="mapcard" href="https://2gis.kg/bishkek/geo/70000001117153093" target="_blank" rel="noopener" aria-label="Открыть карту 2ГИС">
+        <svg viewBox="0 0 400 220" aria-hidden="true">
+          <rect width="400" height="220" fill="#E9D8C2"/>
+          <path d="M0 150 L400 90 M120 0 L170 220 M260 0 L230 220 M0 60 L400 40" stroke="#D3BA9B" stroke-width="14" fill="none"/>
+          <path d="M0 150 L400 90 M120 0 L170 220 M260 0 L230 220" stroke="#F6EEE3" stroke-width="4" fill="none"/>
+          <circle cx="200" cy="105" r="30" fill="#C9A27A" opacity=".25"/>
+          <path d="M200 70c-14 0-25 11-25 25 0 19 25 40 25 40s25-21 25-40c0-14-11-25-25-25z" fill="#8B5E3C"/>
+          <circle cx="200" cy="95" r="9" fill="#F6EEE3"/>
+        </svg>
+        <span>Гагарина, 135а — открыть на карте</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__row">
+    <span>© <span id="year"></span> Erkinbekovna.Studio</span>
+    <span>Бишкек, ул. Гагарина, 135а</span>
+  </div>
+</footer>
+
+<a class="fab" id="waFab" href="#" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
+  <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.5z"/></svg>
+</a>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
